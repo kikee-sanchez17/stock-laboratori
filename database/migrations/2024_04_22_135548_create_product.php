@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('caducitat'); // Campo Caducitat (Fecha)
             $table->string('armari'); // Campo Armari (Alfanumérico)
             $table->timestamps();
-        });
+        }); 
     }
 
     /**
