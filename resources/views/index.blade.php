@@ -7,7 +7,7 @@
             <h2 class="text-white">CRUD de Productes</h2>
         </div>
         <div>
-            <a href="" class="btn btn-primary">Crear Producte</a>
+            <a href="{{ route('products.create') }}" class="btn btn-primary">Crear Producte</a>
         </div>
     </div>
     @if (Session::get('success'))
@@ -25,6 +25,7 @@
                 <th>Capacitat</th>
                 <th>Caducitat</th>
                 <th>Armari</th>
+                <th>Quantitat</th>
             </tr>
             @foreach ($products as $product )
             <tr>
@@ -47,7 +48,10 @@
                     {{$product->armari}}
                 </td>
                 <td>
-                    <a href="" class="btn btn-warning">Editar</a>
+                    {{$product->quantitat}}
+                </td>
+                <td>
+                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Editar</a>
 
                     <form action="{{route('products.destroy',$product)}}" method="post" class="d-inline">
                         @csrf

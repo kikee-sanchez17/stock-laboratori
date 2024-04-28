@@ -40,6 +40,7 @@ class ProductController extends Controller
             'capacitat' => 'required',
             'caducitat' => 'required',
             'armari' => 'required',
+            'quantitat' => 'required',
         ]);
         
         Product::create($request->all());
@@ -78,6 +79,7 @@ class ProductController extends Controller
             'capacitat' => 'required',
             'caducitat' => 'required',
             'armari' => 'required',
+            'quantitat' => 'required',
         ]);
         $product->update($request->all());
         return redirect()->route('products.index')->with('success','Tarea actualizada exitosamente!!');

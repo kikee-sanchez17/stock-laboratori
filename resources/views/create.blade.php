@@ -73,6 +73,12 @@
                     <input type="text" name="armari" class="form-control" placeholder="Armario">
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 mt-2">
+                <div class="form-group">
+                    <strong>Quantitat:</strong>
+                    <input type="text" name="quantitat" class="form-control" placeholder="Quantitat">
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                 <button type="submit" class="btn btn-primary">Crear</button>
             </div>
