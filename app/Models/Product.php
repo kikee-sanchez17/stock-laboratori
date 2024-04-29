@@ -9,4 +9,9 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable=['cas','nom','fds','concentracio','estat','tipus_concentracio','capacitat','caducitat','armari','quantitat'];
+    public function scopeWithQuantityGreaterThanZero($query)
+{
+    return $query->where('quantitat', '>', 500);
 }
+}
+

@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function home()
     {
         //
-        $products = Product::latest()->paginate(3);
+        $products = Product::latest()->paginate(5);
         return view('home',['products' => $products]);
     }
     public function search(){

@@ -32,6 +32,13 @@ public function retirarProducto(Request $request, $id)
     // Redireccionar a la página de inicio con un mensaje de éxito
     return Redirect::route('home')->with('success', 'Cantidad retirada correctamente.');
 }
+public function log(){
+     // Obtener todos los registros de consumos con los nombres de los usuarios relacionados
+    $consums = Consum::with('user', 'product')->get();
+
+    // Pasar los consumos a la vista 'log'
+    return view('log', ['consums' => $consums]);
+}
 
 
     /**
@@ -41,7 +48,7 @@ public function retirarProducto(Request $request, $id)
 {
     // Validar el formulario
     $request->validate([
-        'quantitat' => 'required|integer|min:1', // Asegura que la cantidad sea un número entero positivo
+        'quantitat' => 'required|numeric|min:0.1', // Asegura que la cantidad sea un número entero positivo
         'product_id' => 'required|exists:products,id', // Asegura que el ID del producto exista en la tabla de productos
 
     ]);
@@ -58,7 +65,7 @@ public function retirarProducto(Request $request, $id)
     $consum_alum->data = now(); // Fecha y hora actual
     $consum_alum->cas = $product->cas; // Obtener el CAS del producto
     $consum_alum->concentracio = $product->concentracio; // Obtener la concentración del producto
-    $consum_alum->motiu = 'altres'; // Motivo de consumo (puedes ajustarlo según tu lógica)
+    $consum_alum->motiu = $request->input('motiu'); // Motivo de consumo (puedes ajustarlo según tu lógica)
     $consum_alum->consum = $quantitat; // Cantidad a consumir
     $consum_alum->product_id = $productId; // ID del producto consumido
     $consum_alum->save();

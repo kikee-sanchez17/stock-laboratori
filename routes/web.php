@@ -27,3 +27,4 @@ Route::resource('/products', ProductController::class);
 Route::resource('/consums', ConsumController::class);
 Route::get('/consums/{id}/retirarProducto', [ConsumController::class, 'index'])->name('consums.index');
 Route::get('/search',[ProductController::class, 'search']);
+Route::get('/log', [ConsumController::class, 'log']);
