@@ -24,9 +24,10 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav align-items-center"> <!-- Añadir clase 'align-items-center' -->
                 <li class="nav-item">
-                    <form class="form-inline" role="search">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    </form> <!-- Formulario de búsqueda -->
+                    <form action="{{ url('/search') }}" method="GET" class="form-inline">
+    <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+</form>
                 </li>
                 @if(auth()->check())
                 <li class="nav-item">

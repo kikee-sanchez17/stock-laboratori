@@ -16,6 +16,15 @@ class ProductController extends Controller
         $products = Product::latest()->paginate(3);
         return view('home',['products' => $products]);
     }
+    public function search(){
+        $search_text = $_GET['query'];
+        $products=Product::where(function($query) use ($search_text){
+            $query->where('nom','like',"%$search_text%")
+            ->orWhere('fds','like',"%$search_text%");
+        })
+        ->get();
+        return view('search',compact('products'));
+    }
 
     /**
      * Show the form for creating a new resource.
