@@ -10,11 +10,11 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function home()
     {
         //
         $products = Product::latest()->paginate(3);
-        return view('index',['products' => $products]);
+        return view('home',['products' => $products]);
     }
 
     /**
@@ -34,6 +34,8 @@ class ProductController extends Controller
         //
         $request->validate([
             'cas' => 'required',
+            'nom' => 'required',
+            'fds' => 'required',
             'concentracio' => 'required',
             'estat' => 'required',
             'tipus_concentracio' => 'required',
@@ -44,7 +46,7 @@ class ProductController extends Controller
         ]);
         
         Product::create($request->all());
-        return redirect()->route('products.index')->with('success','Nueva tarea creada exitosamente!!');
+        return redirect()->route('home')->with('success','Nueva tarea creada exitosamente!!');
     }
 
     /**
@@ -73,6 +75,8 @@ class ProductController extends Controller
         //
         $request->validate([
             'cas' => 'required',
+            'nom' => 'required',
+            'fds' => 'required',
             'concentracio' => 'required',
             'estat' => 'required',
             'tipus_concentracio' => 'required',
@@ -82,7 +86,7 @@ class ProductController extends Controller
             'quantitat' => 'required',
         ]);
         $product->update($request->all());
-        return redirect()->route('products.index')->with('success','Tarea actualizada exitosamente!!');
+        return redirect()->route('home')->with('success','Tarea actualizada exitosamente!!');
     }
 
     /**
@@ -92,6 +96,6 @@ class ProductController extends Controller
     {
         //
         $product->delete();
-        return redirect()->route('products.index')->with('success','Tarea eliminada exitosamente!!');
+        return redirect()->route('home')->with('success','Tarea eliminada exitosamente!!');
     }
 }
